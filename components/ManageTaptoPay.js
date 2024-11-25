@@ -113,17 +113,17 @@ const styles = StyleSheet.create({
     heading:{
       fontSize: 30,
       color: 'white',
-      fontWeight: 500,
+      fontWeight: '500',
     }, 
     subHeading:{
       fontSize: 15,
       color: 'white',
-      fontWeight: 300,
+      fontWeight: '300',
     },
     manage:{
       fontSize: 25,
       color: '#FEB600',
-      fontWeight: 500,
+      fontWeight: '500',
     },
     cardContainer:{
       display:'flex',
@@ -150,12 +150,12 @@ const styles = StyleSheet.create({
     cardHeading:{
       fontSize: 22,
       color: '#34657F',
-      fontWeight: 600,
+      fontWeight: '600',
     }, 
     dailyLimit:{
       color: 'black',
       fontSize:20,
-      fontWeight: 400,
+      fontWeight: '400',
     },
     dailyLimit1:{
       fontSize: 20,

@@ -7,6 +7,7 @@ import NfcManager, {Ndef, NfcTech} from 'react-native-nfc-manager'
 const ProcessingPayment = () => {
   const [isNFCEnabled, setIsNFCEnabled] = React.useState(false);
   const [nfcText, setNfcText] = React.useState("NFC started")
+  const [response, setResponse] = React.useState("");
   const checkNfcEnabled = async () => {
     try {
       const isNfcSupported = await NfcManager.isSupported();
@@ -48,10 +49,16 @@ const ProcessingPayment = () => {
     return result;
   }
 
+  const fetchProcessingPayment = async () => {
+    await fetch("https://dynamic-service-dev.app.dev.use1.pcf.syfbank.com/dynamicsService/polling")
+    .then(res => res.json()).then(data => console.log(JSON.stringify(data))).catch(err => console.log("err====="+err))
+  }
+
   useEffect(() => {
-    checkNfcEnabled();
-    let result = writeTag();
-    console.log(result)
+    // checkNfcEnabled();
+    // let result = writeTag();
+    // console.log(result)
+    fetchProcessingPayment();
   }, []);
 
   return (
@@ -68,7 +75,7 @@ const ProcessingPayment = () => {
       ) : ( */}
         <View style={styles.contactlessPaymentText}>
           <Text style={styles.subHeading}>
-            {nfcText}
+            {response}
           </Text>
           <Text style={styles.subHeading}>
             {' Please enable it.'}
@@ -102,13 +109,13 @@ const styles = StyleSheet.create({
   heading: {
     fontSize: 30,
     color: 'white',
-    fontWeight: 500,
+    fontWeight: '500',
     paddingTop: 60,
     paddingBottom: 100,
   },
   subHeading: {
     fontSize: 15,
     color: 'white',
-    fontWeight: 300,
+    fontWeight: '300',
   },
 });
